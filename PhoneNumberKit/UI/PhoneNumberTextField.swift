@@ -500,7 +500,7 @@ open class PhoneNumberTextField: UITextField, UITextFieldDelegate, CountryCodePi
     }
     
     @available(iOS 11.0, *)
-    public func countryCodePickerViewControllerDidPickCountry(_ country: CountryCodePickerViewController.Country) {
+    open func countryCodePickerViewControllerDidPickCountry(_ country: CountryCodePickerViewController.Country) {
         text = isEditing ? "+" + country.prefix : ""
         _defaultRegion = country.code
         partialFormatter.defaultRegion = country.code
