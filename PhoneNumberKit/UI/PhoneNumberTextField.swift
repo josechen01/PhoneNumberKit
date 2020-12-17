@@ -12,7 +12,7 @@ import Foundation
 import UIKit
 
 /// Custom text field that formats phone numbers
-open class PhoneNumberTextField: UITextField, UITextFieldDelegate {
+open class PhoneNumberTextField: UITextField, UITextFieldDelegate, CountryCodePickerDelegate {
     public let phoneNumberKit: PhoneNumberKit
 
     public lazy var flagButton = UIButton()
@@ -498,11 +498,8 @@ open class PhoneNumberTextField: UITextField, UITextFieldDelegate {
             self.updatePlaceholder()
         }
     }
-}
-
-@available(iOS 11.0, *)
-extension PhoneNumberTextField: CountryCodePickerDelegate {
-
+    
+    @available(iOS 11.0, *)
     public func countryCodePickerViewControllerDidPickCountry(_ country: CountryCodePickerViewController.Country) {
         text = isEditing ? "+" + country.prefix : ""
         _defaultRegion = country.code
